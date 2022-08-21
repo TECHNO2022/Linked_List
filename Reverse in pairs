@@ -1,0 +1,38 @@
+//swap linked list in pair;
+
+import java.util.*;
+
+/**
+ * class LLNode {
+ *   int val;
+ *   LLNode next;
+ * }
+ */
+class Solution {
+
+    public LLNode solve(LLNode node) {
+
+        if(node == null)    return node;
+
+        LLNode dummy=null;
+        int count=0;
+        LLNode cur=node;
+        LLNode next=null;
+
+        while(cur!=null && count<2)
+        {
+            next=cur.next;
+            cur.next=dummy;
+            dummy=cur;
+            cur=next;
+            count++;
+        }
+        if(next!=null)
+        {
+            node.next=solve(next);
+
+        }
+        return dummy;
+        
+    }
+}
