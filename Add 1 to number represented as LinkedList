@@ -1,0 +1,62 @@
+/*
+class Node{
+    int data;
+    Node next;
+    
+    Node(int x){
+        data = x;
+        next = null;
+    }
+} 
+*/
+
+
+class Solution
+{
+    
+
+    public static Node reverse(Node head)
+    {
+        Node cur=head;
+        Node prev=null;
+        Node next=null;
+        
+        while(cur!=null)
+        {
+            next=cur.next;
+            cur.next=prev;
+            prev=cur;
+            cur=next;
+        }
+        return prev;
+    }
+    public static Node addOne(Node head) 
+    { 
+        //code here.
+        Node temp=reverse(head);
+        int carry=1;
+        int sum=0;
+        Node curr=temp;
+         Node prev=null;
+        while(curr!=null)
+        {
+           sum=curr.data+carry; 
+            curr.data=sum%10;
+            carry=sum/10;
+            prev=curr;
+            
+            curr=curr.next;
+            
+            
+        }
+
+        if(carry>0)
+        {
+            prev.next=new Node(carry);
+        }
+        
+        return temp;
+        
+        
+    }
+}
